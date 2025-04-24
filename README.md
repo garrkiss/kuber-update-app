@@ -23,17 +23,36 @@
 5. **Тестирование перед релизом**  
    Green-окружение можно протестировать перед переключением трафика, чтобы убедиться в его стабильности.
 
-
 ## Задание 2. Обновить приложение
 
-- [Манифест Deployment](https://github.com/garrkiss/kuber-update-app/blob/main/manifest/deployment.yaml)
+- [Манифест Deployment](https://github.com/garrkiss/kuber-update-app/blob/main/manifest/task1/deployment.yaml)
 
 ### Демонстрация
 Вывели history после всех обновлений, изменил образ nginx на 1.29 для создания проблемы, версию которую 1.28 по заданию, нужно указать, уже выпустили и без проблем приложение стартует.
-![Ссылка](https://github.com/garrkiss/kuber-update-app/blob/main/img/1.png)
+![Ссылка](https://github.com/garrkiss/kuber-update-app/blob/main/img/task1/1.png)
 
 Вывод подов, что есть ошибка с образом 1.29
-![Ссылка](https://github.com/garrkiss/kuber-update-app/blob/main/img/2.png)
+![Ссылка](https://github.com/garrkiss/kuber-update-app/blob/main/img/task1/2.png)
 
 Откат к 1.28
-![Ссылка](https://github.com/garrkiss/kuber-update-app/blob/main/img/3.png)
+![Ссылка](https://github.com/garrkiss/kuber-update-app/blob/main/img/task1/3.png)
+
+## Задание 3*. Создать Canary deployment
+
+- [Манифест Nginx configmap v1](https://github.com/garrkiss/kuber-update-app/blob/main/manifest/taks2/nginx-v1-configmap.yaml)
+- [Манифест Nginx configmap v2](https://github.com/garrkiss/kuber-update-app/blob/main/manifest/taks2/nginx-v2-configmap.yaml)
+- [Манифест Nginx deployment v1](https://github.com/garrkiss/kuber-update-app/blob/main/manifest/taks2/nginx-v1-deployment.yaml)
+- [Манифест Nginx deployment v2](https://github.com/garrkiss/kuber-update-app/blob/main/manifest/taks2/nginx-v2-deployment.yaml)
+- [Манифест Nginx service v1](https://github.com/garrkiss/kuber-update-app/blob/main/manifest/taks2/nginx-v1-service.yaml)
+- [Манифест Nginx service v2](https://github.com/garrkiss/kuber-update-app/blob/main/manifest/taks2/nginx-v2-service.yaml)
+- [Манифест Ingress](https://github.com/garrkiss/kuber-update-app/blob/main/manifest/taks2/ingress.yaml)
+- [Манифест Ingress Canary 20%](https://github.com/garrkiss/kuber-update-app/blob/main/manifest/taks2/ingress-canary.yaml)
+
+### Демонстрация работы
+
+Применяем и проверяем состояние
+![Ссылка](https://github.com/garrkiss/kuber-update-app/blob/main/img/task2/1.png)
+
+Видим, что обновляя страницу перекидывает между версиями, 20% трафика на версию v2
+![Ссылка](https://github.com/garrkiss/kuber-update-app/blob/main/img/task2/2.png)
+![Ссылка](https://github.com/garrkiss/kuber-update-app/blob/main/img/task2/3.png)
